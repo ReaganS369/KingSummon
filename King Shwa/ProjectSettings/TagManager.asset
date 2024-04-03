@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - PlayzoneWall
+  - GameField(PursuitTeam)
+  - GameField(KingTeam)
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Layer 1
+  - Layer 2
+  - Layer 3
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - UI Overlay Screen
+  m_SortingLayers:
+  - name: Background 1
+    uniqueID: 2400957225
+    locked: 0
+  - name: Background 2
+    uniqueID: 4092783457
+    locked: 0
+  - name: Background 3
+    uniqueID: 938386205
+    locked: 0
+  - name: Background 4
+    uniqueID: 2914673597
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Layer 1
+    uniqueID: 2425651459
+    locked: 0
+  - name: Layer 2
+    uniqueID: 4250941897
+    locked: 0
+  - name: Layer 3
+    uniqueID: 4189426099
+    locked: 0
+  - name: Barrier
+    uniqueID: 1200450899
+    locked: 0
