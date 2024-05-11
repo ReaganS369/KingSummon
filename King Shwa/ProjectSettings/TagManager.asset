@@ -5,8 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayzoneWall
-  - GameField(PursuitTeam)
-  - GameField(KingTeam)
+  - Runner
+  - Chaser
+  - Castle
+  - StartLine
   layers:
   - Default
   - TransparentFX
@@ -15,10 +17,10 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
+  - Background
+  - Assets
+  - Player
+  - MiniMap
   - 
   - 
   - 
