@@ -1,0 +1,16 @@
+Using template 'C:/Program Files/Unity/Hub/Editor/2022.3.19f1/Editor/Data/PlaybackEngines/AndroidPlayer\Apk\UnityManifest.xml'
+
+isGame application flag was added because:
+	Android TV Compatability was enabled
+android.max_aspect was added because:
+	Max Aspect Ratio was set
+android.permission.INTERNET was added because:
+	Development player
+android.hardware.touchscreen.multitouch, android.hardware.touchscreen.multitouch.distinct were enabled because:
+	UnityEngine.Input::get_touches was present in:
+		Cinemachine-FeaturesChecked.txt
+	UnityEngine.Input::GetTouch was present in:
+		UnityEngine.UI-FeaturesChecked.txt
+	UnityEngine.Input::get_touchCount was present in:
+		UnityEngine.UI-FeaturesChecked.txt
+		Cinemachine-FeaturesChecked.txt

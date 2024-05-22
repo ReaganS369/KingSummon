@@ -8,6 +8,7 @@ public class StartZoneWall : MonoBehaviour
 
     private BoxCollider2D wallCollider; // Use BoxCollider2D directly
     public string runnerTag = "Runner";
+    public string kingTag = "King";
 
     private bool canToggleTrigger = false; // Flag to control the trigger toggling
 
@@ -40,40 +41,48 @@ public class StartZoneWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Only allow trigger toggling after the delay period
-        if (canToggleTrigger && collision.collider.CompareTag(runnerTag))
+        if (canToggleTrigger && (collision.collider.CompareTag(runnerTag) || collision.collider.CompareTag(kingTag)))
         {
-            // Assign the collider to runnerCollider
-            runnerCollider = collision.collider;
-
-            // Enable trigger if runner touches from the left side
-            if (collision.contacts[0].normal.x > 0)
-            {
-                wallCollider.isTrigger = true;
-                runnerCollider.isTrigger = true;
-                Debug.Log("Runner touched the wall from the left. isTrigger set to true.");
-            }
+            HandleCollision(collision.collider, collision.contacts[0].normal.x);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Only allow trigger toggling after the delay period
-        if (canToggleTrigger && other.CompareTag(runnerTag))
+        if (canToggleTrigger && (other.CompareTag(runnerTag) || other.CompareTag(kingTag)))
         {
-            // Assign the collider to runnerCollider
-            runnerCollider = other;
+            HandleTrigger(other);
+        }
+    }
 
-            // Get Runner's Rigidbody2D component
-            Rigidbody2D runnerRb = other.GetComponent<Rigidbody2D>();
+    private void HandleCollision(Collider2D collider, float contactNormalX)
+    {
+        // Assign the collider to runnerCollider
+        runnerCollider = collider;
 
-            if (runnerRb != null && runnerRb.velocity.x < 0)
-            {
-                // Disable the trigger to block the Runner
-                wallCollider.isTrigger = false;
-                runnerCollider.isTrigger = false;
-                Debug.Log("Runner is moving from right to left. isTrigger set to false.");
-            }
+        // Enable trigger if runner/king touches from the left side
+        if (contactNormalX > 0)
+        {
+            wallCollider.isTrigger = true;
+            runnerCollider.isTrigger = true;
+            Debug.Log("Runner/King touched the wall from the left. isTrigger set to true.");
+        }
+    }
+
+    private void HandleTrigger(Collider2D collider)
+    {
+        // Assign the collider to runnerCollider
+        runnerCollider = collider;
+
+        // Get Runner's Rigidbody2D component
+        Rigidbody2D runnerRb = collider.GetComponent<Rigidbody2D>();
+
+        if (runnerRb != null && runnerRb.velocity.x < 0)
+        {
+            // Disable the trigger to block the Runner/King
+            wallCollider.isTrigger = false;
+            runnerCollider.isTrigger = false;
+            Debug.Log("Runner/King is moving from right to left. isTrigger set to false.");
         }
     }
 
@@ -117,5 +126,4 @@ public class StartZoneWall : MonoBehaviour
             }
         }
     }
-
 }

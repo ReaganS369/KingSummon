@@ -6,16 +6,28 @@ public class GameTimer : MonoBehaviour
     // SerializeField allows you to set this in the Unity editor
     [SerializeField] private Text timerText;
 
-    // The duration of the timer in seconds (60 seconds)
-    private float timerDuration = 60f;
+    // The duration of the first timer phase in seconds (60 seconds)
+    [SerializeField] private float countUpDuration = 60f;
+
+    // The duration of the second timer phase in seconds (3 minutes and 60 seconds = 240 seconds)
+    [SerializeField] private float countDownDuration = 240f;
 
     // The remaining time in seconds
     private float remainingTime;
 
+    // Enum to track the current phase of the timer
+    private enum TimerPhase
+    {
+        CountingUp,
+        CountingDown
+    }
+    private TimerPhase timerPhase;
+
     private void Start()
     {
-        // Initialize the remaining time to the timer duration
-        remainingTime = timerDuration;
+        // Initialize the remaining time to the count-up duration
+        remainingTime = 0f;
+        timerPhase = TimerPhase.CountingUp;
 
         // Update the timer text
         UpdateTimerText();
@@ -23,19 +35,32 @@ public class GameTimer : MonoBehaviour
 
     private void Update()
     {
-        // Decrease the remaining time
-        remainingTime -= Time.deltaTime;
-
-        // Make sure the remaining time doesn't go below 0
-        if (remainingTime < 0f)
+        // Update the remaining time based on the current phase
+        if (timerPhase == TimerPhase.CountingUp)
         {
-            remainingTime = 0f;
+            remainingTime += Time.deltaTime;
+
+            // Check if the count-up phase is complete
+            if (remainingTime >= countUpDuration)
+            {
+                remainingTime = countDownDuration;
+                timerPhase = TimerPhase.CountingDown;
+            }
+        }
+        else if (timerPhase == TimerPhase.CountingDown)
+        {
+            remainingTime -= Time.deltaTime;
+
+            // Make sure the remaining time doesn't go below 0
+            if (remainingTime < 0f)
+            {
+                remainingTime = 0f;
+                // Add any additional logic here (e.g., game over when time runs out)
+            }
         }
 
         // Update the timer text
         UpdateTimerText();
-
-        // Add any additional logic here (e.g., game over when time runs out)
     }
 
     // Method to update the timer text

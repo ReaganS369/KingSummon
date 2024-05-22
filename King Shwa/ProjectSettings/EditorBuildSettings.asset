@@ -6,9 +6,60 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Character Select.unity
-    guid: 932d793d1be78af4db50f55ec096394d
+    path: Assets/Scenes/Main Menu.unity
+    guid: f6b0dc124806d0148907056bbf2d3a9d
   - enabled: 1
-    path: Assets/Scenes/GameHUD.unity
-    guid: 72cef1e7b8be871499461adca7109c3f
-  m_configObjects: {}
+    path: Assets/Scenes/Multiplayer/7v7/7v7 K.unity
+    guid: a5218a725c0d6a6418810a8ed30e729c
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/7v7/7v7 R.unity
+    guid: 0df9948b0cf7e9e459240c9e984de8b7
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/7v7/7v7 RC Choice.unity
+    guid: e1067d583aefd314ebf56a65df861987
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/7v7/7v7 RK Choice.unity
+    guid: c9e291b3b62771b44a66584a91c84d28
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/5v5/5v5 K 1.unity
+    guid: afe8ed7440416ae428d8964161dba87a
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/5v5/5v5 R 1.unity
+    guid: 31e107323f924d849aea625c93b7d485
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/5v5/5v5 RC Choice 1.unity
+    guid: 34475a4562db0b246b81d37170b1c55f
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/5v5/5v5 RK Choice 1.unity
+    guid: bcc29bb84d35faf47b47e4511ed39362
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/3v3/3v3 K.unity
+    guid: 0cf1ca2c9cb67114a9d62e5c26bddcf3
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/3v3/3v3 R.unity
+    guid: 700692c1dd53d1d459a2482bf54bc03f
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/3v3/3v3 RC Choice.unity
+    guid: bf6417fdb49b2414d98acda02eac8380
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/3v3/3v3 RK Choice.unity
+    guid: 1c859544dc0559547ad43a4b64c9e087
+  - enabled: 1
+    path: Assets/Scenes/Mission/L1.unity
+    guid: 6acf13924182e6147a665d58df2bf919
+  - enabled: 1
+    path: Assets/Scenes/Mission/L1 2.unity
+    guid: c69a32a3c776a90418246e81d8f4421d
+  - enabled: 1
+    path: Assets/Scenes/demo R.unity
+    guid: a408f58c71b255940a6964e9c69764a0
+  - enabled: 1
+    path: Assets/Scenes/5v5 K 2.unity
+    guid: e892e66bdada0594fa504bb1229e158f
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 3e52f3d81148c0d44ba13a1db32d4ee8,
+      type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: 8b4b5c0f6832abf4ebf7a3b62229f112, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
+      guid: 3b0207d1cedb370488e981321917bf8d, type: 2}

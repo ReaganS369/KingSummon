@@ -1,24 +1,67 @@
 using UnityEngine;
+using Cinemachine;
+using System.Collections;
+
+using UnityEngine.UI;
 
 public class KingLogic : MonoBehaviour
 {
-    // Serialized field to reference the game over UI
-    [SerializeField]
-    private GameObject gameoverUI;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameObject attackSkill;
+    [SerializeField] private GameObject shieldSkill;
+    [SerializeField] private GameObject victoryUI;
+    [SerializeField] private GameObject gameoverUI;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private RunnersLogic runnersLogic;
+
+    private void Start()
     {
-        // Check if the collided object has the "Chaser" tag
-        if (collision.gameObject.CompareTag("Chaser"))
+        if (gameManager == null)
         {
-            // Log a message indicating the player has died
-            Debug.Log("Player has died.");
+            gameManager = FindObjectOfType<GameManager>();
+        }
 
-            // Deactivate the player game object
-            gameObject.SetActive(false);
+        runnersLogic = FindObjectOfType<RunnersLogic>();
 
-            // Activate the game over UI
-            gameoverUI.SetActive(true);
+        attackSkill.SetActive(false);
+        shieldSkill.SetActive(false);
+    }
+
+    public IEnumerator ObjectActivationRoutine()
+    {
+        while (true)
+        {
+            attackSkill.SetActive(true);
+            shieldSkill.SetActive(false);
+            yield return new WaitForSeconds(2f);
+
+            attackSkill.SetActive(false);
+            shieldSkill.SetActive(true);
+            yield return new WaitForSeconds(2f);
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Castle"))
+        {
+            Debug.Log("King reached the finish");
+            if (victoryUI != null)
+            {
+                victoryUI.SetActive(true);
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+         if (other.CompareTag("Castle"))
+        {
+            Debug.Log("King reached the finish");
+            if (victoryUI != null)
+            {
+                victoryUI.SetActive(true);
+            }
+        }
+    }
+
 }

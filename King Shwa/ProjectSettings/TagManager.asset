@@ -9,6 +9,7 @@ TagManager:
   - Chaser
   - Castle
   - StartLine
+  - King
   layers:
   - Default
   - TransparentFX

@@ -1,54 +1,67 @@
 using UnityEngine;
-using Cinemachine;
 
 public class RunnersLogic : MonoBehaviour
 {
-    [SerializeField] private GameObject[] players;
-    [SerializeField] private GameObject king;
-    [SerializeField] private GameObject[] uiElements;
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private KingLogic kingLogic;
+    [SerializeField] private UIManager uiManager; // Reference to the UIManager
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private BoxCollider2D kingCollider;
+
+    private void Start()
     {
-        if (other.gameObject.CompareTag("Chaser"))
+        gameManager ??= FindObjectOfType<GameManager>();
+        uiManager ??= FindObjectOfType<UIManager>();
+
+        if (gameManager == null)
         {
-            Debug.Log("Player dies");
-            gameObject.SetActive(false);
+            Debug.LogError("GameManager not found in the scene. Please assign it in the Inspector.");
         }
-        else if (other.gameObject.CompareTag("Castle"))
+
+        if (uiManager == null)
         {
-            Debug.Log("Player reached the finish");
-            SpecialKingSkillActive();
+            Debug.LogError("UIManager not found in the scene. Please assign it in the Inspector.");
+        }
+
+        if (kingLogic != null)
+        {
+            kingCollider = kingLogic.GetComponent<BoxCollider2D>();
         }
     }
 
-    private void SpecialKingSkillActive()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Activating special king skill...");
-
-        foreach (GameObject player in players)
+        if (collision.gameObject.CompareTag("Chaser"))
         {
-            if (player != null)
-            {
-                Debug.Log("Teleporting player to king's position...");
-                player.transform.position = king.transform.position;
-                player.SetActive(false);
-            }
+            Destroy(gameObject);
+            gameManager?.RunnerDied(gameObject);
+            uiManager?.HideUIElements();
+            uiManager?.ShowButton();
         }
+    }
 
-        foreach (GameObject uiElement in uiElements)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other == null) return;
+
+        if (other.CompareTag("Chaser"))
         {
-            if (uiElement != null)
-            {
-                Debug.Log("Disabling UI element...");
-                uiElement.SetActive(false);
-            }
+            Destroy(gameObject);
+            Debug.Log("Player dies");
+            gameManager?.RunnerDied(gameObject);
+            uiManager?.HideUIElements();
+            uiManager?.ShowButton();
         }
-
-        if (virtualCamera != null)
+        else if (other.CompareTag("Castle"))
         {
-            Debug.Log("Switching virtual camera follow target to king...");
-            virtualCamera.m_Follow = king.transform;
+            Debug.Log("Runner reached the castle");
+            gameManager?.RunnerReachedFinish(gameObject);
+            uiManager?.HideUIElements();
+
+            if (kingCollider != null)
+            {
+                kingCollider.enabled = false;
+            }
         }
     }
 }
