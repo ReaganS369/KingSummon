@@ -430,6 +430,7 @@
 "Assets/Script/Timer.cs"
 "Assets/Script/UI/Character Selection/CharacterCell.cs"
 "Assets/Script/UI/CountdownTimer.cs"
+"Assets/Script/UI/ObjectHider.cs"
 "Assets/Script/UI/Push Menu.cs"
 "Assets/Script/UI/SceneManagementScript.cs"
 "Assets/Script/UI/UIManager.cs"

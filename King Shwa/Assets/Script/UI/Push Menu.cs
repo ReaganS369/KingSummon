@@ -33,6 +33,18 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void publicPush()
+    {
+        if (GamePause)
+        {
+            pResume();
+        }
+        else
+        {
+            pPause();
+        }
+    }
+
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -43,6 +55,18 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GamePause = true;
+    }
+
+    public void pResume()
+    {
+        Time.timeScale = 1.0f;
+        GamePause = false;
+    }
+
+    void pPause()
+    {
         Time.timeScale = 0f;
         GamePause = true;
     }
