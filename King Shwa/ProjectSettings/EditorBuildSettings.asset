@@ -53,6 +53,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dev/Demo King.unity
     guid: 9cc8656199de600479c9b99e7167cb1c
+  - enabled: 1
+    path: Assets/Scenes/Dev/Demo Knight.unity
+    guid: 6b596bfccc0ac6740ac6d491761982e5
+  - enabled: 1
+    path: Assets/Scenes/Dev/missionary.unity
+    guid: efe8f1dc96841404d8dcffe6d13cce30
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 3e52f3d81148c0d44ba13a1db32d4ee8,
       type: 2}
